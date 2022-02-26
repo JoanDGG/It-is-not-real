@@ -9,10 +9,15 @@ public class CanvasMenu : MonoBehaviour
     public GameObject canvasMenu;
 
     public GameObject player;
+
+    public GameObject canvasMain;
+    public GameObject canvasPause;
     // Start is called before the first frame update
     void Awake()
     {
         player.SetActive(false);
+        canvasMain.SetActive(false);
+        canvasPause.SetActive(false);
     }
 
     void Start()
@@ -28,6 +33,7 @@ public class CanvasMenu : MonoBehaviour
             canvasMenu.SetActive(false);
             Cursor.visible = true;
             player.SetActive(true);
+            canvasMain.SetActive(true);
         }
     }
 }
