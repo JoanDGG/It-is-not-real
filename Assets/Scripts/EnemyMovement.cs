@@ -5,11 +5,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private int facingRight = 1;
-    public float movementSpeed = 3f;
+    private float movementSpeed = 3f;
     Rigidbody2D rigidbody2d;
     Vector2 playerPosition;
     Vector2 lookDirection;
-    Vector2 movementDirection;
     private GameObject child;
 
     // Start is called before the first frame update
@@ -26,18 +25,7 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit2D hit2D = Physics2D.Linecast(child.transform.position, playerPosition);
         Debug.DrawLine(child.transform.position, playerPosition, Color.red);
 
-        if(gameObject.name.Contains("Enemy 2"))
-        {
-            movementDirection = followPlayerMovement();
-        }
-        else if(gameObject.name.Contains("Enemy 4"))
-        {
-            // Doesnt move
-        }
-        else
-        {
-            movementDirection = horizontalMovement();
-        }
+        Vector2 movementDirection = horizontalMovement();
         
         if(hit2D.collider != null)
         {
@@ -69,15 +57,6 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = new Vector2(transform.position.x + movementSpeed * facingRight * Time.deltaTime, 
                                          transform.position.y);
         transform.position = direction;
-
-        return direction;
-    }
-
-    public Vector2 followPlayerMovement()
-    {
-        Vector2 direction = playerPosition - (Vector2)transform.position;
-        direction.Normalize();
-        rigidbody2d.MovePosition((Vector2)transform.position + (direction * movementSpeed * Time.deltaTime));
 
         return direction;
     } 
