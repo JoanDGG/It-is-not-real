@@ -47,7 +47,7 @@ public class Shooting : MonoBehaviour
         }
 
         GameObject bullet = Instantiate(bulletPrefab, child.transform.position, child.transform.rotation);
-        bullet.tag = gameObject.tag;
+        bullet.tag = "Bullet";
         Rigidbody2D rigidbody2d_bullet = bullet.GetComponent<Rigidbody2D>();
         rigidbody2d_bullet.AddForce(child.transform.up * bulletForce, ForceMode2D.Impulse);
         StartCoroutine(StartCooldown());
