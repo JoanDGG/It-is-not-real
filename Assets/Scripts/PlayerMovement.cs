@@ -38,17 +38,5 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDirection = mousePos - rigidbody2d.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         rigidbody2d.rotation = angle;
-        /*
-        if ((horizontal > 0.0f && !facingRight) || (horizontal < 0.0f && facingRight))
-        {
-            Flip();
-        }
-        */
-    }
-
-    void Flip()
-    {
-        facingRight = !facingRight;
-        transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
 }

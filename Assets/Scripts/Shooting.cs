@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public Transform firePoint;
     public GameObject bulletPrefab;
-
-    private GameObject bullet;
-    private Rigidbody2D rigidbody2d_bullet;
     private Rigidbody2D rigidbody2d;
-
     public float bulletForce;
-
-    public GameObject player;
-    Vector2 playerPosition;
-
-
+    private bool IsAvailable = true;
+    public float CooldownDuration = 0.2f;
+    private GameObject child;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        child = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -33,8 +27,8 @@ public class Shooting : MonoBehaviour
         }
         else
         {
-            playerPosition = player.transform.position;
-            RaycastHit2D hit2D = Physics2D.Linecast(transform.position, playerPosition);
+            Vector2 playerPosition = GameObject.FindWithTag("Player").transform.position;
+            RaycastHit2D hit2D = Physics2D.Linecast(child.transform.position, playerPosition);
             if(hit2D.collider != null)
             {
                 if(hit2D.collider.CompareTag("Player"))
@@ -47,9 +41,23 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        rigidbody2d_bullet = bullet.GetComponent<Rigidbody2D>();
-        rigidbody2d_bullet.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        if (IsAvailable == false)
+        {
+            return;
+        }
+
+        GameObject bullet = Instantiate(bulletPrefab, child.transform.position, child.transform.rotation);
+        bullet.tag = gameObject.tag;
+        Rigidbody2D rigidbody2d_bullet = bullet.GetComponent<Rigidbody2D>();
+        rigidbody2d_bullet.AddForce(child.transform.up * bulletForce, ForceMode2D.Impulse);
+        StartCoroutine(StartCooldown());
     }
+
+    public IEnumerator StartCooldown()
+     {
+         IsAvailable = false;
+         yield return new WaitForSeconds(CooldownDuration);
+         IsAvailable = true;
+     }
 
 }

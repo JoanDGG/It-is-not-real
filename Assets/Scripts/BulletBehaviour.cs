@@ -7,25 +7,29 @@ public class BulletBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DestroyBullet());
+        StartCoroutine(DestroyBullet(2f));
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Wall")
+        StartCoroutine(DestroyBullet(0.15f));
+        if(gameObject.tag != other.gameObject.tag)
         {
-            Destroy(gameObject);
+            if(other.gameObject.tag == "Player")
+            {
+                // Lower player HP
+                // Destroy(other.gameObject);
+                // Time.timeScale = 0;
+            }
+            else if(other.gameObject.tag == "Enemy")
+            {
+                // Lower enemy HP
+                Destroy(other.gameObject);
+            }
         }
     }
-    public IEnumerator DestroyBullet()
+    public IEnumerator DestroyBullet(float time)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }
 }
