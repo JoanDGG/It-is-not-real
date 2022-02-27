@@ -33,7 +33,6 @@ public class HealthPoints : MonoBehaviour
                 centerText.GetComponent<FadeOutUI>().Exit();
                 gameObject.layer = 4;
                 PlayerPrefs.SetInt("Waves", GameObject.Find("GameManager").GetComponent<EnemySpawner>().actualWave);
-                // Time.timeScale = 0;
             }
             else if (gameObject.tag == "Enemy")
             {
@@ -42,14 +41,4 @@ public class HealthPoints : MonoBehaviour
             }
         }
     }
-    /*
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag != gameObject.tag && other.gameObject.name.Contains("Bullet")) 
-        {
-            hp -= 1f;
-            Destroy(other.gameObject);
-        }
-    }
-    */
 }
