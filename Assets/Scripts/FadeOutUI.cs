@@ -10,12 +10,19 @@ public class FadeOutUI : MonoBehaviour
     public float lifeTime = 5.0f;
 
     private Text texto;
+    public GameObject titleText;
+    public GameObject controlsText;
 
     // Start is called before the first frame update
     void Start()
     {
         texto = GetComponent<Text>();
-        FadeOutText();
+        if(gameObject.name == "PressText")
+        {
+            StartCoroutine(lifeTimeCoroutine());
+            titleText.SetActive(false);
+            controlsText.SetActive(false);
+        }
     }
 
     public void FadeInText()
@@ -31,6 +38,15 @@ public class FadeOutUI : MonoBehaviour
         StartCoroutine(FadeOutRoutine());
     }
 
+    private IEnumerator lifeTimeCoroutine()
+    {
+        yield return new WaitForSeconds(2.5f);
+        FadeOutText();
+        yield return new WaitForSeconds(lifeTime/2);
+        texto.text = "Press space to start";
+        titleText.SetActive(true);
+        controlsText.SetActive(true);
+    }
     private IEnumerator FadeInRoutine()
     {
         while (texto.color.a < 1.0f)
@@ -57,6 +73,7 @@ public class FadeOutUI : MonoBehaviour
             texto.color = new Color(texto.color.r,
                                     texto.color.g,
                                     texto.color.b, 1f);
+            FadeOutText();
         }
     }
 
@@ -85,7 +102,8 @@ public class FadeOutUI : MonoBehaviour
         {
             texto.color = new Color(texto.color.r,
                                     texto.color.g,
-                                    texto.color.b, 0f); 
+                                    texto.color.b, 0f);
+            FadeInText();
         }
     }
 }

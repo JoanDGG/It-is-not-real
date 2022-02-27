@@ -258,7 +258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Space to start
+  m_Text: "12:20 am\n\r\n        Goodnight, sleep well honey"
 --- !u!222 &5451245339576555691
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -283,8 +283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 232}
-  m_SizeDelta: {x: 6784.3833, y: 860.1479}
+  m_AnchoredPosition: {x: 52.7281, y: 199.55194}
+  m_SizeDelta: {x: 7838.946, y: 1509.1091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5451245339576555693
 MonoBehaviour:
@@ -300,6 +300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 3
   lifeTime: 5
+  titleText: {fileID: 5451245340245206739}
+  controlsText: {fileID: 5451245341057209918}
 --- !u!1 &5451245339880498168
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +543,6 @@ GameObject:
   - component: {fileID: 5451245340367156418}
   - component: {fileID: 5451245340367156417}
   - component: {fileID: 5451245340367156416}
-  - component: {fileID: 5451245340367156431}
   m_Layer: 5
   m_Name: CanvasMenu
   m_TagString: Untagged
@@ -549,22 +550,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5451245340367156431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451245340367156430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3001d8893fddd4490b23b84433df02dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressText: {fileID: 5451245339576555690}
-  canvasMenu: {fileID: 5451245340367156430}
-  canvasMain: {fileID: 0}
-  canvasPause: {fileID: 0}
 --- !u!114 &5451245341057209904
 MonoBehaviour:
   m_ObjectHideFlags: 0
