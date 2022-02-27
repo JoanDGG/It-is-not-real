@@ -16,6 +16,8 @@ public class FadeOutUI : MonoBehaviour
     private bool IsAvailable = true;
     public float CooldownDuration;
 
+    public bool finish = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,9 @@ public class FadeOutUI : MonoBehaviour
                                     texto.color.g,
                                     texto.color.b, 0f);
             FadeInText();
+            titleText.SetActive(false);
+            controlsText.SetActive(false);
+            GameObject.Find("CanvasGameOver").SetActive(false);
         }
     }
     void Update()
@@ -43,13 +48,26 @@ public class FadeOutUI : MonoBehaviour
                 if (IsAvailable == true)
                     SceneManager.LoadScene("Main");
             }
-            else
+            else 
             {
-                gameObject.GetComponent<Animator>().SetTrigger("Start");
+                if (!GameObject.Find("CanvasGameOver").activeSelf)
+                {
+                    gameObject.GetComponent<Animator>().SetTrigger("Start");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Main");
+                }
             }
         }
     }
 
+    public void Exit()
+    {
+        titleText.SetActive(false);
+        controlsText.SetActive(false);
+        StartCoroutine(FadeOutEffect());
+    }
     public void FadeInText()
     {
         texto = GetComponent<Text>();
@@ -63,6 +81,19 @@ public class FadeOutUI : MonoBehaviour
         StartCoroutine(FadeOutRoutine());
     }
 
+    private IEnumerator FadeOutEffect()
+    {
+        texto.color = new Color(texto.color.r,
+                                texto.color.g,
+                                texto.color.b, 0f);
+        yield return new WaitForSeconds(2.5f);
+        FadeInText();
+        texto.text = "Honey, you're dreaming...\nGo back to sleep";
+        yield return new WaitForSeconds(lifeTime);
+        titleText.GetComponent<Text>().text = "Total waves: " + GameObject.Find("GameManager").GetComponent<EnemySpawner>().actualWave;
+        titleText.SetActive(true);
+        controlsText.SetActive(true);
+    }
     private IEnumerator lifeTimeCoroutine()
     {
         CooldownDuration = lifeTime + 2.0f;
@@ -72,7 +103,6 @@ public class FadeOutUI : MonoBehaviour
         FadeOutText();
         yield return new WaitForSeconds(lifeTime/2);
         texto.text = "";
-        print("B");
         titleText.SetActive(true);
         controlsText.SetActive(true);
     }
@@ -102,7 +132,8 @@ public class FadeOutUI : MonoBehaviour
             texto.color = new Color(texto.color.r,
                                     texto.color.g,
                                     texto.color.b, 1f);
-            FadeOutText();
+            if(!finish)
+                FadeOutText();
         }
     }
 
@@ -139,7 +170,6 @@ public class FadeOutUI : MonoBehaviour
     {
         IsAvailable = false;
         yield return new WaitForSeconds(CooldownDuration);
-        print("A");
         texto.text = "Press space to start";
         IsAvailable = true;
     }

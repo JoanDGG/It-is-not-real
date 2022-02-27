@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class HealthPoints : MonoBehaviour
 {
     public float hp = 100f;
+    public GameObject centerText;
+    public GameObject canvasGameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,18 @@ public class HealthPoints : MonoBehaviour
             if (gameObject.tag == "Player") 
             {
                 // Destroy and show canvas of game over
+                canvasGameOver.SetActive(true);
+                centerText.SetActive(true);
+                centerText.GetComponent<FadeOutUI>().Exit();
+                gameObject.layer = 4;
+                PlayerPrefs.SetInt("Waves", GameObject.Find("GameManager").GetComponent<EnemySpawner>().actualWave);
                 // Time.timeScale = 0;
             }
             else if (gameObject.tag == "Enemy")
             {
                 GameObject.Find("GameManager").GetComponent<EnemySpawner>().enemies2NextWave -= 1;
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
     }
     /*

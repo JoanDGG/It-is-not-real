@@ -26,6 +26,10 @@ public class EnemySpawner : MonoBehaviour
                 GameObject.Find("Player").GetComponent<HealthPoints>().hp = 100;
             }
         }
+        if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     public void enemySpawn()
