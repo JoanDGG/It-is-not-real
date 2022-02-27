@@ -41,7 +41,6 @@ public class BulletBehaviour : MonoBehaviour
     {
         if(gameObject.tag != other.gameObject.tag)
         {
-            print(other.gameObject.name);
             StartCoroutine(DestroyBullet(0.15f));
             if(other.gameObject.name.Contains("Enemy"))
             {

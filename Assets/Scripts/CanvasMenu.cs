@@ -34,6 +34,7 @@ public class CanvasMenu : MonoBehaviour
             Cursor.visible = true;
             player.SetActive(true);
             canvasMain.SetActive(true);
+            GameObject.Find("GameManager").GetComponent<EnemySpawner>().enemySpawn();
         }
     }
 }

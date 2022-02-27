@@ -28,6 +28,10 @@ public class HealthPoints : MonoBehaviour
                 // Destroy and show canvas of game over
                 // Time.timeScale = 0;
             }
+            else if (gameObject.tag == "Enemy")
+            {
+                GameObject.Find("GameManager").GetComponent<EnemySpawner>().enemies2NextWave -= 1;
+            }
             Destroy(gameObject);
         }
     }
