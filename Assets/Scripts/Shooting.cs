@@ -13,6 +13,7 @@ public class Shooting : MonoBehaviour
     private float startAngle = 0f, endAngle = 180;
     [SerializeField]
     private int bulletsAmount = 5;
+    public PickObject PickObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class Shooting : MonoBehaviour
     {
         if (gameObject.tag == "Player") 
         {
-            if(Input.GetKey("space"))
+            if(Input.GetKey("space") && PickObject.weaponEnabled)
                 Shoot();
         }
         else
