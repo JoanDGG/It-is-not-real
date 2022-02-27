@@ -14,11 +14,13 @@ public class Shooting : MonoBehaviour
     [SerializeField]
     private int bulletsAmount = 5;
     public PickObject PickObject;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         child = transform.GetChild(0).gameObject;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,8 +28,14 @@ public class Shooting : MonoBehaviour
     {
         if (gameObject.tag == "Player") 
         {
-            if(Input.GetKey("space") && PickObject.weaponEnabled)
+            animator.SetBool("isMoving", true);
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isShooting", false);
+            if(Input.GetKey("space") && PickObject.weaponEnabled) {
+                animator.SetBool("isAttacking", true);
+                animator.SetBool("isShooting", true);
                 Shoot();
+            }
         }
         else
         {

@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
         //animator.SetFloat("velocity", Mathf.Abs(rigidbody2d.velocity.x + rigidbody2d.velocity.y));
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rigidbody2d.velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
-
         Vector2 lookDirection = mousePos - rigidbody2d.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         rigidbody2d.rotation = angle;
