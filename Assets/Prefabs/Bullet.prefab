@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   homing: 0
+  PickObject: {fileID: 6164387079311087543, guid: 5b2378fa32fc04880b80dbaf50cef104, type: 3}
 --- !u!70 &4447719559622014576
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

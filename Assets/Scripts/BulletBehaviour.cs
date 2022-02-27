@@ -8,6 +8,7 @@ public class BulletBehaviour : MonoBehaviour
     public float moveSpeed;
     public bool homing = false;
 
+    public PickObject PickObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +43,12 @@ public class BulletBehaviour : MonoBehaviour
         {
             print(other.gameObject.name);
             StartCoroutine(DestroyBullet(0.15f));
-            if(other.gameObject.name.Contains("Player") || other.gameObject.name.Contains("Enemy"))
+            if(other.gameObject.name.Contains("Enemy"))
             {
                 // Lower HP
+                other.gameObject.GetComponent<HealthPoints>().ChangeHealt(-1);
+            }
+            else if (other.gameObject.name.Contains("Player") && PickObject.shieldEnabled == false) {
                 other.gameObject.GetComponent<HealthPoints>().ChangeHealt(-1);
             }
         }
