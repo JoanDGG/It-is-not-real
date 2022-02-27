@@ -49,10 +49,12 @@ public class PickObject : MonoBehaviour
     {
         if(other.gameObject.tag == "Object") 
         {
-            //transform.GetChild(0).gameObject.SetActive(true);
             if(Input.GetKeyDown("f")) {
-                spriteRenderer.sprite = Resources.Load<Sprite>(other.gameObject.name);
-                Destroy(other.gameObject);
+                // spriteRenderer.sprite = Resources.Load<Sprite>(other.gameObject.name);
+                // Destroy(other.gameObject);
+                other.gameObject.transform.SetParent(gameObject.transform);
+                other.gameObject.GetComponent<Collider2D>().enabled = false;
+                
                 objectPickedUp = true;
                 weaponEnabled = true;
                 objectHealth = 250;
