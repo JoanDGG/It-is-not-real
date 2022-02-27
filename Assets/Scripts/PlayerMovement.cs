@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static bool facingRight = true;
     public float movementSpeed = 5;
-
     private float horizontal;
     private float vertical;
-
     Rigidbody2D rigidbody2d;
     Animator animator;
 

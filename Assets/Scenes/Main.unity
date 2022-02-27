@@ -763,7 +763,7 @@ Transform:
   - {fileID: 466735594}
   - {fileID: 634377225}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466735593
 GameObject:
@@ -789,7 +789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466735593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.57, y: 2.43, z: 0}
+  m_LocalPosition: {x: 10.6, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461152973}
@@ -915,6 +915,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -930,6 +931,26 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1062b2d7abc9e47a243e7a18d35d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xMargin: 2
+  yMargin: 0
+  xSmooth: 2
+  ySmooth: 1
+  yOffset: 1
+  maxXandY: {x: 35, y: 29}
+  minXandY: {x: -18, y: -4}
+  target: {fileID: 1179024669}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1041,7 +1062,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634377224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 3.63, z: 0}
+  m_LocalPosition: {x: -3.9, y: 2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461152973}
@@ -1142,7 +1163,7 @@ RectTransform:
   - {fileID: 2085216579}
   - {fileID: 225846797}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2053,6 +2074,7 @@ GameObject:
   - component: {fileID: 1179024674}
   - component: {fileID: 1179024675}
   - component: {fileID: 1179024676}
+  - component: {fileID: 1179024677}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2124,7 +2146,7 @@ Transform:
   m_Children:
   - {fileID: 569339690}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1179024672
 MonoBehaviour:
@@ -2174,8 +2196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4719708796149416842, guid: 26e4fe847820b4cf09c98bb2b3b70111, type: 3}
-  bulletForce: 22
   CooldownDuration: 0.2
+  bulletsAmount: 5
 --- !u!61 &1179024675
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2214,11 +2236,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c2b762811844f4db91a448e4bab9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3916856964003518860, guid: d3c19a198e519b6459788b2a53c90788, type: 3}
-  CooldownDuration: 1
+  CooldownDuration: 5
+  enemiesPrefab:
+  - {fileID: 3916856964003518860, guid: e5f927d755bdeaf4197509e65db9a802, type: 3}
+  - {fileID: 3916856964003518860, guid: acd246552c95c8c4ea97734b93801a77, type: 3}
+  - {fileID: 3916856964003518860, guid: 776a28cf056aa4f45863324f038b32ac, type: 3}
+  - {fileID: 3916856964003518860, guid: d3c19a198e519b6459788b2a53c90788, type: 3}
   spawnPositions:
   - {fileID: 466735593}
   - {fileID: 634377224}
+--- !u!114 &1179024677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179024669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9edf0de4fda4559951332e5b2aac74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!1 &1235616237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,7 +3558,7 @@ RectTransform:
   - {fileID: 855578982}
   - {fileID: 1589266396}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

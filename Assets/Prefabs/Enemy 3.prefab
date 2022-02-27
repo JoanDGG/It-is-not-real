@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3916856963984565624}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,8 +47,8 @@ GameObject:
   - component: {fileID: 3916856964003518858}
   - component: {fileID: 9121131869163140722}
   - component: {fileID: -7207205039372739230}
-  m_Layer: 0
-  m_Name: Enemy
+  m_Layer: 1
+  m_Name: Enemy 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0, g: 0.19940811, b: 0.9245283, a: 1}
+  m_Color: {r: 0.8301887, g: 0.17041081, b: 0.05795654, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0819ef8db196c4285fe82cab5bf620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 3
 --- !u!50 &3916856964003518862
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +145,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -166,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4719708796149416842, guid: 26e4fe847820b4cf09c98bb2b3b70111, type: 3}
-  bulletForce: 8
-  CooldownDuration: 0.3
+  CooldownDuration: 1
+  bulletsAmount: 5
 --- !u!20 &3916856964003518859
 Camera:
   m_ObjectHideFlags: 0
@@ -265,4 +266,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9edf0de4fda4559951332e5b2aac74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 5

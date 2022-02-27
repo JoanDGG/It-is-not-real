@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
     private bool IsAvailable = true;
     public float CooldownDuration = 5f;
-
+    public GameObject[] enemiesPrefab;
     public GameObject[] spawnPositions;
     void Update()
     {
@@ -20,7 +19,8 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Instantiate(enemyPrefab, spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, 
+        GameObject enemy = Instantiate(enemiesPrefab[Random.Range(0, enemiesPrefab.Length)], 
+                    spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position, 
                     Quaternion.identity);
 
         StartCoroutine(StartCooldown());

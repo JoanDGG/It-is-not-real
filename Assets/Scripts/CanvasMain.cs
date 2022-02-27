@@ -19,7 +19,7 @@ public class CanvasMain : MonoBehaviour
         if (Input.GetKeyDown("p"))
         {
             Time.timeScale = 0.0f;
-            canvasPause.gameObject.SetActive (true);
+            canvasPause.gameObject.SetActive(true);
             gameObject.SetActive(false);
             Cursor.visible = false;
         }
